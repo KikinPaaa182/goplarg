@@ -4,6 +4,8 @@ const CONFIG = {
 
     tiktok: "goplarg",
 
+    instagram: "goplarggas",
+
     email: "ejemplo@gmail.com"
 
 };
@@ -22,6 +24,9 @@ whatsappURL;
 
 document.getElementById("btn-tiktok").href =
 `https://www.tiktok.com/@${CONFIG.tiktok}`;
+
+document.getElementById("btn-ig").href =
+`https://www.instagram.com/${CONFIG.instagram}`;
 
 document.getElementById("email-link").href =
 `mailto:${CONFIG.email}`;

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-web
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mi-web
+  template:
+    metadata:
+      labels:
+        app: mi-web
+    spec:
+      containers:
+        - name: mi-web
+          image: mi-web:v2
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80

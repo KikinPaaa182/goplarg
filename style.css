@@ -380,8 +380,17 @@ nav a:hover{
     background:#222222;
 }
 
+#btn-ig{
+    background: #E1306C;
+}
+
+#btn-ig:hover{
+    background: #d0358d;
+}
+
 #btn-whatsapp-red,
-#btn-tiktok{
+#btn-tiktok,
+#btn-ig{
     box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
