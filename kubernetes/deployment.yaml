@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: mi-web
-          image: goplarg:v2
+          image: goplarg:v3
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
