@@ -146,8 +146,10 @@ nav a:hover{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(3, 1fr);
     gap:30px;
+    max-width:1100px;
+    margin:0 auto;
 }
 
 .card{
@@ -241,52 +243,186 @@ nav a:hover{
     font-size:2.3rem;
 }
 
-.grid-galeria{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+.galeria-contenedor{
+    position:relative;
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.galeria-slider{
+    display:flex;
     gap:20px;
-}
-
-.grid-galeria img{
+    overflow:hidden;
+    scroll-behavior:smooth;
     width:100%;
+}
+
+.media-item{
+    flex:0 0 calc((100% - 40px) / 3);
     height:250px;
+    border-radius:15px;
+    overflow:hidden;
+    cursor:pointer;
+    background:#000;
+    box-shadow:0 5px 20px rgba(0,0,0,.10);
+}
+
+.media-item img,
+.media-item video{
+    width:100%;
+    height:100%;
     object-fit:cover;
+    display:block;
+    transition:.3s;
 }
 
-.foto1 {
-    object-position: center;
+.media-item:hover img,
+.media-item:hover video{
+    transform:scale(1.04);
 }
 
-.foto2 {
-    object-position: 50% 10%;
+
+/* POSICION DE LAS FOTOS */
+
+.foto1{
+    object-position:center;
 }
 
-.foto3 {
-    object-position: center;
+.foto2{
+    object-position:50% 10%;
 }
 
-.foto4 {
-    object-position: 50% 100%;
+.foto3{
+    object-position:center;
 }
 
-.foto5 {
-    object-position: 50% 10%;
+.foto4{
+    object-position:50% 100%;
 }
 
-.foto6 {
-    object-position: 50% 100%;
+.foto5{
+    object-position:50% 10%;
 }
 
-.foto7 {
-    object-position: 50% 40%;
+.foto6{
+    object-position:50% 100%;
 }
 
-.foto8 {
-    object-position: 50% 20%;
+.foto7{
+    object-position:50% 40%;
 }
 
-.grid-galeria img:hover{
-    transform:scale(1.03);
+.foto8{
+    object-position:50% 20%;
+}
+
+
+/* FLECHAS DE LA GALERIA */
+
+.galeria-flecha{
+    flex-shrink:0;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:var(--verde);
+    color:white;
+    font-size:1.2rem;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.3s;
+    z-index:5;
+}
+
+.galeria-flecha:hover{
+    background:var(--verde-hover);
+    transform:scale(1.08);
+}
+
+
+/* VISOR */
+
+.visor-galeria{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.85);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:2000;
+    padding:40px;
+}
+
+.visor-galeria.activo{
+    display:flex;
+}
+
+.visor-contenido{
+    max-width:85vw;
+    max-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.visor-contenido img,
+.visor-contenido video{
+    max-width:85vw;
+    max-height:85vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    border-radius:10px;
+    box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+.visor-cerrar{
+    position:absolute;
+    top:25px;
+    right:30px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:white;
+    color:var(--azul);
+    font-size:1.4rem;
+    cursor:pointer;
+    z-index:10;
+}
+
+.visor-flecha{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+    color:var(--azul);
+    font-size:1.3rem;
+    cursor:pointer;
+    z-index:10;
+    transition:.3s;
+}
+
+.visor-flecha:hover{
+    background:white;
+    transform:translateY(-50%) scale(1.08);
+}
+
+.visor-anterior{
+    left:30px;
+}
+
+.visor-siguiente{
+    right:30px;
 }
 
 /* BENEFICIOS */
@@ -454,51 +590,369 @@ footer{
     transform:scale(1.1);
 }
 
+/* ============================= */
 /* RESPONSIVE */
+/* ============================= */
 
 @media(max-width:768px){
 
+    /* HEADER */
+
     header{
-        padding:5px 5%;
-        display:flex;
-        flex-direction:column;
-        align-items:center;
-        gap:5px;
+        padding:8px 5%;
+        gap:8px;
     }
 
     header img{
-        height:55px;
+        height:45px;
         width:auto;
     }
 
     nav{
-        display:flex;
-        flex-wrap:wrap;
-        justify-content:center;
-        gap:15px;
+        gap:12px;
     }
 
     nav a{
-        font-size:0.95rem;
+        font-size:.8rem;
     }
 
+
+    /* HERO */
+
     .hero{
-        height:85vh;
+        height:75vh;
+        min-height:500px;
+        padding:20px;
+    }
+
+    .hero-content{
+        max-width:500px;
+        padding:15px;
     }
 
     .hero h1{
-        font-size:2.3rem;
-        line-height:1.2;
-        padding-top: 90px;
+        font-size:1.8rem;
+        line-height:1.25;
+        margin-bottom:15px;
+        padding-top:50px;
     }
 
     .hero p{
-        font-size:1.4rem;
+        font-size:1rem;
+        line-height:1.6;
+        margin-bottom:25px;
     }
 
     .btn-principal{
-        padding:18px 35px;
-        font-size:1.2rem;
+        padding:12px 25px;
+        font-size:.95rem;
+    }
+
+
+    /* ESTADISTICAS */
+
+    .estadisticas{
+        grid-template-columns:1fr;
+        gap:25px;
+        padding:55px 8%;
+    }
+
+    .stat h2{
+        font-size:2.2rem;
+    }
+
+    .stat p{
+        font-size:.95rem;
+    }
+
+
+    /* SERVICIOS */
+
+    .servicios{
+        padding:65px 7%;
+    }
+
+    .servicios h2{
+        font-size:1.8rem;
+        margin-bottom:35px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+        gap:20px;
+        max-width:400px;
+    }
+
+    .card{
+        padding:25px 20px;
+    }
+
+    .card i{
+        font-size:2.3rem;
+        margin-bottom:15px;
+    }
+
+    .card h3{
+        font-size:1.1rem;
+    }
+
+    .card p{
+        font-size:.9rem;
+    }
+
+
+    /* QUIENES SOMOS */
+
+    .nosotros{
+        padding:65px 7%;
+    }
+
+    .nosotros h2{
+        font-size:1.8rem;
+        margin-bottom:30px;
+    }
+
+    .nosotros p{
+        font-size:.95rem;
+        line-height:1.6;
+        padding:5px;
+    }
+
+    .equipo{
+        margin-top:40px;
+        gap:45px;
+    }
+
+    .persona{
+        max-width:230px;
+    }
+
+    .persona img{
+        width:180px;
+        height:180px;
+    }
+
+    .persona h1{
+        font-size:1.3rem;
+        margin-top:12px;
+    }
+
+    .persona p{
+        font-size:.9rem;
+    }
+
+
+    /* GALERIA */
+
+    .galeria{
+        padding:65px 5%;
+    }
+
+    .galeria h2{
+        font-size:1.8rem;
+        margin-bottom:35px;
+    }
+
+    .galeria-contenedor{
+        gap:6px;
+    }
+
+    .galeria-slider{
+        gap:12px;
+    }
+
+    .media-item{
+        flex:0 0 100%;
+        height:220px;
+    }
+
+    .galeria-flecha{
+        width:38px;
+        height:38px;
+        font-size:.9rem;
+    }
+
+
+    /* VISOR DE GALERIA */
+
+    .visor-galeria{
+        padding:15px;
+    }
+
+    .visor-contenido{
+        max-width:88vw;
+        max-height:75vh;
+    }
+
+    .visor-contenido img,
+    .visor-contenido video{
+        max-width:88vw;
+        max-height:75vh;
+    }
+
+    .visor-flecha{
+        width:40px;
+        height:40px;
+        font-size:1rem;
+    }
+
+    .visor-anterior{
+        left:8px;
+    }
+
+    .visor-siguiente{
+        right:8px;
+    }
+
+    .visor-cerrar{
+        top:12px;
+        right:12px;
+        width:40px;
+        height:40px;
+        font-size:1.1rem;
+    }
+
+
+    /* BENEFICIOS */
+
+    .beneficios{
+        padding:65px 7%;
+    }
+
+    .beneficios h2{
+        font-size:1.8rem;
+        margin-bottom:30px;
+    }
+
+    .beneficios-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+
+    .beneficios-grid div{
+        padding:18px;
+        font-size:.9rem;
+    }
+
+
+    /* CONTACTO */
+
+    .contacto{
+        padding:65px 7%;
+        grid-template-columns:1fr;
+        gap:40px;
+    }
+
+    .contacto h2{
+        font-size:1.8rem;
+        margin-bottom:20px;
+    }
+
+    .contacto p{
+        font-size:.9rem;
+    }
+
+    .redes a{
+        padding:12px;
+        font-size:.9rem;
+    }
+
+
+    /* CTA */
+
+    .cta-presupuesto{
+        padding:65px 7%;
+    }
+
+    .cta-presupuesto h2{
+        font-size:1.9rem;
+    }
+
+    .cta-presupuesto p{
+        font-size:.95rem;
+        line-height:1.6;
+    }
+
+
+    /* FOOTER */
+
+    footer{
+        padding:22px;
+        font-size:.85rem;
+    }
+
+
+    /* WHATSAPP FLOTANTE */
+
+    .whatsapp-float{
+        width:52px;
+        height:52px;
+        right:18px;
+        bottom:18px;
+        font-size:1.6rem;
+    }
+
+}
+
+@media(max-width:480px){
+
+    header{
+        padding:6px 4%;
+    }
+
+    header img{
+        height:40px;
+    }
+
+    nav{
+        gap:9px;
+    }
+
+    nav a{
+        font-size:.72rem;
+    }
+
+
+    .hero{
+        min-height:450px;
+    }
+
+    .hero h1{
+        font-size:1.55rem;
+    }
+
+    .hero p{
+        font-size:.9rem;
+    }
+
+
+    .servicios h2,
+    .nosotros h2,
+    .galeria h2,
+    .beneficios h2,
+    .contacto h2{
+        font-size:1.6rem;
+    }
+
+
+    .card{
+        padding:22px 18px;
+    }
+
+
+    .persona img{
+        width:160px;
+        height:160px;
+    }
+
+
+    .media-item{
+        height:200px;
+    }
+
+
+    .cta-presupuesto h2{
+        font-size:1.65rem;
     }
 
 }
