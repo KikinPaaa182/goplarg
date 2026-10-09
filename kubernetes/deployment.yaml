@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mi-web
+  name: goplarg
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: mi-web
+      app: goplarg
   template:
     metadata:
       labels:
-        app: mi-web
+        app: goplarg
     spec:
       containers:
-        - name: mi-web
+        - name: goplarg
           image: goplarg:v3
           imagePullPolicy: IfNotPresent
           ports:

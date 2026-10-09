@@ -12,6 +12,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: mi-web-service
+                name: goplarg
                 port:
                   number: 80
